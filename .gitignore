@@ -1,0 +1,12 @@
+# Windows thumbnails & caches
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# Obsidian workspace cache (optional, avoids noisy commits on tab switches)
+.obsidian/workspace.json
