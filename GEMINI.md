@@ -1,6 +1,8 @@
-# 🤖 GEMINI.md — Quy Chuẩn Vận Hành & Quản Lý Dự Án Cho AI Agent (Antigravity)
+# 🤖 GEMINI.md — Bộ Quy Chuẩn Nghiên Cứu & Khuôn Mẫu Vận Hành Cho Các Dự Án
 
-Tài liệu này định nghĩa vai trò, nguyên tắc làm việc và quy chuẩn quản lý dự án bắt buộc của AI Agent (Antigravity) trong workspace này.
+> [!important] **Mục đích tài liệu:**
+> Tài liệu này được thiết kế như một **BỘ KHUÔN MẪU (Template / Blueprint)** để bạn **nghiên cứu và tái sử dụng cho các dự án phần mềm / source code khác trong tương lai**.
+> Mỗi khi bạn khởi tạo một dự án mới, chỉ cần copy tệp `GEMINI.md` này vào thư mục gốc của project đó để AI Agent (Antigravity) tự động kích hoạt chế độ làm việc chuẩn chỉ.
 
 ---
 
