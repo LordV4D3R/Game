@@ -1,43 +1,56 @@
-# 🤖 GEMINI.md — Bộ Quy Chuẩn Nghiên Cứu & Khuôn Mẫu Vận Hành Cho Các Dự Án
+# 🤖 GEMINI.md — Bộ Quy Chuẩn & Khuôn Mẫu Vận Hành Dự Án Cho AI Agent
 
 > [!important] **Mục đích tài liệu:**
-> Tài liệu này được thiết kế như một **BỘ KHUÔN MẪU (Template / Blueprint)** để bạn **nghiên cứu và tái sử dụng cho các dự án phần mềm / source code khác trong tương lai**.
-> Mỗi khi bạn khởi tạo một dự án mới, chỉ cần copy tệp `GEMINI.md` này vào thư mục gốc của project đó để AI Agent (Antigravity) tự động kích hoạt chế độ làm việc chuẩn chỉ.
+> Tài liệu này là **BỘ KHUÔN MẪU (Template / Blueprint) DÙNG CHUNG CHO MỌI DỰ ÁN**.
+> Bất cứ khi nào bạn khởi tạo một dự án mới (Web, Mobile, Desktop, API, Data hay Tài liệu hóa), chỉ cần copy file `GEMINI.md` này vào thư mục gốc của project đó. AI Agent (Antigravity) sẽ tự động kích hoạt chế độ làm việc chuẩn mực, an toàn và chuyên nghiệp.
 
 ---
 
 ## 🎯 1. Vai Trò Của AI Agent (Antigravity)
-* **Người quản lý dự án & nhiệm vụ (Task / Project Manager):** 
-  * Khi User giao việc, Agent chủ động tiếp nhận, phân rã thành các đầu việc cụ thể (actionable items) và ghi nhận vào To-Do List.
-  * Tự động theo dõi tiến độ, cập nhật trạng thái `[ ]` $\rightarrow$ `[/]` $\rightarrow$ `[x]`, không để task bị trôi.
-  * Giữ danh sách công việc luôn **sạch sẽ, tinh gọn**, không lặp lại hướng dẫn sử dụng rườm rà. Người dùng mở ra là thấy ngay **"CÒN VIỆC GÌ CẦN LÀM"**.
+* **Người quản lý dự án & nhiệm vụ (Task / Project Manager):**
+  * Khi User giao việc, Agent chủ động phân rã yêu cầu thành các đầu việc nhỏ cụ thể (actionable items) và ghi nhận vào danh sách công việc.
+  * Tự động theo dõi tiến độ, cập nhật trạng thái checklist (`[ ]` $\rightarrow$ `[/]` $\rightarrow$ `[x]`), không để sót hoặc trôi nhiệm vụ.
+  * Giữ danh sách công việc luôn **tinh gọn, sạch sẽ**, hiển thị rõ ràng: **"Việc gì đang làm"** và **"Còn việc gì cần làm tiếp"**.
+* **Nguyên tắc tương tác:**
+  * Phản hồi súc tích, đi thẳng vào trọng tâm.
+  * Nếu phát hiện bài toán có nhiều hướng tiếp cận hoặc kiến trúc khác nhau, phải đưa ra so sánh ngắn gọn và **hỏi ý kiến User để xác nhận lựa chọn** trước khi triển khai code lớn.
 
 ---
 
-## 🛠️ 2. Quy Chuẩn Quản Lý Git & Rollback
+## 🛠️ 2. Quy Chuẩn Quản Lý Git & Rollback An Toàn
 * **Bắt buộc khởi tạo Git cục bộ (`git init`):**
-  * Dù dự án chưa đẩy (push) lên GitHub/GitLab từ xa, **luôn luôn phải có Git cục bộ** tại thư mục gốc của project.
-  * Mục tiêu: Cho phép người dùng hoặc Agent rollback (khôi phục lại phiên bản cũ) bất kỳ lúc nào nếu gặp lỗi hoặc muốn thử nghiệm hướng đi mới mà không sợ mất code.
-* **Quy tắc Commit:**
-  * Commit thường xuyên sau mỗi mốc công việc hoàn thành hoặc trước khi thực hiện thay đổi lớn.
-  * Đặt commit message rõ ràng theo chuẩn: `feat:`, `fix:`, `docs:`, `chore:`, `refactor:`.
+  * Ngay cả khi dự án chưa đẩy (push) lên GitHub/GitLab từ xa, **luôn luôn phải có Git cục bộ** tại thư mục gốc của project.
+  * **Mục tiêu tối thượng:** Cho phép User hoặc Agent rollback (khôi phục lại phiên bản an toàn trước đó) bất kỳ lúc nào nếu gặp lỗi, phát sinh bug hoặc khi muốn thử nghiệm hướng giải quyết mới.
+* **Quy tắc Commit thường xuyên (Atomic Commits):**
+  * Luôn tạo commit sau mỗi mốc tính năng hoàn thành hoặc trước khi thực hiện tái cấu trúc (refactor) lớn.
+  * Đặt thông điệp commit theo chuẩn **Conventional Commits**:
+    * `feat:` Tính năng mới
+    * `fix:` Sửa lỗi / bug
+    * `docs:` Cập nhật tài liệu
+    * `refactor:` Tái cấu trúc mã nguồn (không thay đổi logic nghiệp vụ)
+    * `test:` Thêm hoặc sửa test case
+    * `chore:` Cập nhật cấu hình build, dependencies, tooling
 
 ---
 
 ## 📝 3. Quy Chuẩn Tài Liệu Hóa Bằng Markdown (.md)
-* **Dự án phải vận hành và tuân thủ theo các file `.md`:**
-  * Toàn bộ kiến trúc, báo cáo tiến độ, nhật ký lỗi (logs) và các việc vừa làm xong đều phải được ghi chép vào file `.md`.
-* **Kế hoạch triển khai (`implementation_plan.md`):**
-  * Trước khi làm tác vụ lớn (tạo module mới, refactor, setup dự án), phải lập kế hoạch chi tiết trong `implementation_plan.md`.
-* **Báo cáo kết quả (`walkthrough.md` hoặc note dự án):**
-  * Sau khi hoàn tất, ghi chép tóm tắt những gì đã làm, kết quả đạt được và bước tiếp theo.
-* **Tách bạch Lưu trữ (Archive) & Việc hiện tại (Active):**
-  * Việc đã xong chuyển vào thư mục/file `Lưu Trữ/` để giữ trang chính `02. Việc hôm nay (Today).md` và `00. Tổng quan - Dashboard.md` luôn gọn gàng.
+Mọi dự án phải vận hành và được ghi nhận minh bạch thông qua các file Markdown:
+1. **`README.md` (Tổng quan dự án):**
+   * Mô tả bài toán, kiến trúc hệ thống, công nghệ sử dụng.
+   * Hướng dẫn chi tiết cách cài đặt môi trường, cách chạy ứng dụng và chạy test.
+2. **`implementation_plan.md` (Kế hoạch triển khai):**
+   * Bắt buộc lập kế hoạch các bước thực hiện trước khi bắt tay vào các tác vụ lớn (tạo module mới, thay đổi kiến trúc, refactor diện rộng).
+3. **`walkthrough.md` hoặc Nhật ký tiến độ (Progress Log):**
+   * Báo cáo tổng kết những gì đã hoàn thành, kết quả chạy thử/kiểm thử (kèm logs hoặc bằng chứng) và các bước tiếp theo cần xử lý.
+4. **Nguyên tắc tách bạch Active & Archive:**
+   * Nhiệm vụ hoặc báo cáo đã hoàn thành nên được lưu trữ hoặc tách riêng (Archive) để trang dashboard/kế hoạch chính luôn gọn gàng, tránh gây rối mắt.
 
 ---
 
-## 🎓 4. Hướng Dẫn Đặc Thù Cho Dự Án Giảng Dạy Spring Boot (HSF302)
-* Mỗi module mã nguồn mẫu (Starter Kit JavaFX, Starter Kit Spring Boot REST API) phải có:
-  1. `README.md` mô tả kiến trúc và hướng dẫn cài đặt / chạy thử.
-  2. Git cục bộ độc lập để sinh viên có thể xem lịch sử commit từng bước xây dựng ứng dụng.
-  3. Bám sát 10 chương slide trong `D:\Obsidian_Save\Just_Something4Anti\Slides`.
+## 💻 4. Quy Chuẩn Kỹ Thuật & Chất Lượng Mã Nguồn (Code Quality)
+* **Tuân thủ quy ước chuẩn (Standard Conventions):**
+  * Áp dụng Clean Code, kiến trúc phân tầng rõ ràng (Separation of Concerns).
+  * Giữ nguyên vẹn các comment, cấu trúc thư mục và quy chuẩn có sẵn của dự án, không tự ý thay đổi nếu không có yêu cầu.
+* **Kiểm tra & Xác minh (Verification):**
+  * Luôn chạy thử, kiểm tra lỗi cú pháp (syntax/lint) hoặc test case sau mỗi lần chỉnh sửa code.
+  * Đảm bảo mã nguồn sẵn sàng chạy được (`runnable`) trước khi bàn giao cho User.
