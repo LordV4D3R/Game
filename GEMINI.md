@@ -64,6 +64,13 @@ Mọi dự án phải vận hành và được ghi nhận minh bạch thông qua
 * **Tuân thủ quy ước chuẩn (Standard Conventions):**
   * Áp dụng Clean Code, kiến trúc phân tầng rõ ràng (Separation of Concerns).
   * Giữ nguyên vẹn các comment, cấu trúc thư mục và quy chuẩn có sẵn của dự án, không tự ý thay đổi nếu không có yêu cầu.
+* **Quy chuẩn Ghi Log & Truy Vết (Logging & Debuggability):**
+  * Mọi cú pháp code và các luồng xử lý nghiệp vụ phải đặt **log đúng chỗ, đúng cấp độ** (`INFO`, `DEBUG`, `WARN`, `ERROR`) tại các điểm then chốt:
+    * Điểm tiếp nhận request / bắt đầu hàm nghiệp vụ chính (kèm tham số đầu vào quan trọng).
+    * Trước và sau khi gọi dịch vụ ngoại vi, truy vấn Database hoặc gọi API bên thứ ba.
+    * Các nhánh rẽ logic điều kiện mang tính quyết định.
+    * Trong khối bắt ngoại lệ (`try-catch` / error handling), bắt buộc log chi tiết thông điệp lỗi và stack trace.
+  * Nội dung log phải có ngữ cảnh rõ ràng (kèm ID thực thể, timestamp hoặc request trace ID), tránh log mơ hồ để đảm bảo việc truy vết luồng chạy và gỡ lỗi (debug) diễn ra nhanh chóng, chính xác.
 * **Kiểm tra & Xác minh (Verification):**
   * Luôn chạy thử, kiểm tra lỗi cú pháp (syntax/lint) hoặc test case sau mỗi lần chỉnh sửa code.
   * Đảm bảo mã nguồn sẵn sàng chạy được (`runnable`) trước khi bàn giao cho User.
