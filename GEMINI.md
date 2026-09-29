@@ -11,9 +11,10 @@
   * Khi User giao việc, Agent chủ động phân rã yêu cầu thành các đầu việc nhỏ cụ thể (actionable items) và ghi nhận vào danh sách công việc.
   * Tự động theo dõi tiến độ, cập nhật trạng thái checklist (`[ ]` $\rightarrow$ `[/]` $\rightarrow$ `[x]`), không để sót hoặc trôi nhiệm vụ.
   * Giữ danh sách công việc luôn **tinh gọn, sạch sẽ**, hiển thị rõ ràng: **"Việc gì đang làm"** và **"Còn việc gì cần làm tiếp"**.
-* **Nguyên tắc tương tác:**
+* **Nguyên tắc tương tác & Xử lý câu hỏi:**
   * Phản hồi súc tích, đi thẳng vào trọng tâm.
   * Nếu phát hiện bài toán có nhiều hướng tiếp cận hoặc kiến trúc khác nhau, phải đưa ra so sánh ngắn gọn và **hỏi ý kiến User để xác nhận lựa chọn** trước khi triển khai code lớn.
+  * **Xử lý khi có nhiều câu hỏi chưa chắc chắn:** Nếu yêu cầu còn nhiều điểm mơ hồ hoặc có quá nhiều thắc mắc cần đính chính, Agent chủ động **tạo ra 1 file Markdown riêng (ví dụ `clarifications_needed.md`)** tổng hợp rõ ràng tất cả các điểm cần User làm rõ/xác nhận thay vì đoán mò hoặc hỏi rời rạc.
 
 ---
 
@@ -42,7 +43,10 @@ Mọi dự án phải vận hành và được ghi nhận minh bạch thông qua
    * Bắt buộc lập kế hoạch các bước thực hiện trước khi bắt tay vào các tác vụ lớn (tạo module mới, thay đổi kiến trúc, refactor diện rộng).
 3. **`walkthrough.md` hoặc Nhật ký tiến độ (Progress Log):**
    * Báo cáo tổng kết những gì đã hoàn thành, kết quả chạy thử/kiểm thử (kèm logs hoặc bằng chứng) và các bước tiếp theo cần xử lý.
-4. **Nguyên tắc tách bạch Active & Archive:**
+4. **Nguyên tắc Liên Kết Chéo & Truy Vết Nghiệp Vụ (Interlinking & Traceability):**
+   * Các file `.md`, các phần tài liệu trong Obsidian hoặc tài liệu kỹ thuật **bắt buộc phải được liên kết chéo với nhau** (`[[WikiLinks]]` hoặc `[Link](file://...)`) nếu có quan hệ logic hoặc nghiệp vụ.
+   * Khi tài liệu hóa một **Flow (luồng xử lý nghiệp vụ)**: Phải mô tả tường minh luồng đi từ đâu tới đâu (ví dụ: `UI / Input` $\rightarrow$ `Controller` $\rightarrow$ `Service` $\rightarrow$ `Repository` $\rightarrow$ `Database`), giải thích rõ ràng tại từng mắt xích và **liệt kê đầy đủ các Test Case kiểm thử tương ứng** (Happy path, Edge case, Error handling).
+5. **Nguyên tắc tách bạch Active & Archive:**
    * Nhiệm vụ hoặc báo cáo đã hoàn thành nên được lưu trữ hoặc tách riêng (Archive) để trang dashboard/kế hoạch chính luôn gọn gàng, tránh gây rối mắt.
 
 ---
