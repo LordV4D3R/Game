@@ -19,6 +19,19 @@
 
 ---
 
+## 🔄 Chiến Lược Tách Chat Theo Tính Năng (Session Splitting & Context Hygiene)
+
+* **Nguyên lý Bộ Nhớ Ngoài (Obsidian là Single Source of Truth):**
+  * Một phiên chat nếu kéo dài quá nhiều tác vụ sẽ làm tràn cửa sổ ngữ cảnh (Context Window Saturation), dẫn đến hiện tượng AI **"quên code cũ"**, bỏ sót chi tiết hoặc sinh code mâu thuẫn với cấu trúc hiện tại.
+  * Khắc phục triệt để bằng cách: **Tách mỗi phiên chat mới cho từng tính năng (Feature) hoặc luồng xử lý (Flow) độc lập**.
+  * Obsidian đóng vai trò là **"Bộ não trung tâm / Bộ nhớ ngoài dài hạn"** lưu trữ toàn bộ kiến trúc, luồng xử lý và trạng thái tiến độ (`[ ]` $\rightarrow$ `[/]` $\rightarrow$ `[x]`).
+* **Vòng đời chuẩn của một phiên chat con (Sub-Session Lifecycle):**
+  * **Khởi động:** Mở phiên chat mới với 100% dung lượng ngữ cảnh sạch $\rightarrow$ Đọc tệp `.md` nghiệp vụ tương ứng trong Obsidian để nắm đúng phạm vi.
+  * **Thực thi:** Agent chỉ tập trung đọc các file code liên quan trực tiếp, viết code sạch, đặt log chuẩn và kiểm thử.
+  * **Đóng gói & Bàn giao:** Sau khi tính năng hoàn thành và test pass, Agent tạo commit Git (`feat: ...`) và **cập nhật lại tiến độ vào file `.md` trong Obsidian** trước khi kết thúc phiên chat.
+
+---
+
 ## 🛠️ Quy Chuẩn Quản Lý Git & Rollback An Toàn
 
 * **Bắt buộc khởi tạo Git cục bộ (`git init`):**
