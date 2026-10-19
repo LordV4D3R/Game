@@ -12,22 +12,22 @@ Ngay khi bắt đầu một phiên chat mới có gắn thư mục trong `D:\Obs
 - **Bước kiểm tra hiện trạng ("Có rồi thì viết tiếp — Chưa có mới tạo mới"):**
   - Quét nhanh cây thư mục trong `D:\Obsidian_Save\` (gồm các phân khu chính: `Game\`, `Knownledge\`, `Mindy\`, `Outsource\`, `Todo_List\`, `Just_Something4Anti\`).
   - **Trường hợp ĐÃ CÓ thư mục / chủ đề tương ứng:**
-    - Tìm và đọc ngay tệp `00. Tổng quan...` (hoặc Dashboard) cùng các tệp liên quan trong thư mục đó để nắm toàn bộ lịch sử, bối cảnh và những gì đã làm trước đây.
-    - **Viết nối tiếp và cập nhật trực tiếp** vào hệ thống tệp sẵn có. Tuyệt đối không tạo thư mục trùng lặp hoặc ghi chú rời rạc bên ngoài.
+    - Tìm và đọc ngay tệp Tổng quan (`00. Tổng quan...` hoặc `Tong_Quan_Du_An.md`) cùng các tệp liên quan trong thư mục đó để nắm toàn bộ lịch sử, bối cảnh và mẫu trình bày sẵn có.
+    - **Viết nối tiếp và cập nhật trực tiếp** vào hệ thống tệp hiện hành. Tuyệt đối không tạo thư mục trùng lặp hoặc ghi chú rời rạc bên ngoài.
   - **Trường hợp CHƯA CÓ (Chủ đề / Dự án hoàn toàn mới):**
     - Xác định đúng phân khu phù hợp với bản chất yêu cầu (ví dụ: game/mod game vào `Game\`, môn học vào `Mindy\`, kiến thức vào `Knownledge\`, dự án khách hàng vào `Outsource\`).
-    - Tạo thư mục con mới gọn gàng và khởi tạo tệp trung tâm `00. Tổng quan - [Tên Chủ Đề].md`.
+    - Tạo thư mục con mới (kèm `.obsidian/app.json` có `"showLineNumber": false` nếu là Vault độc lập) và khởi tạo bộ tệp theo đúng khuôn mẫu chuẩn bên dưới.
 
 ```mermaid
 flowchart TD
     Start["Bắt Đầu Phiên Chat Mới"] --> Scan["Quét Cây Thư Mục D:\Obsidian_Save\"]
     Scan --> Exists{"Chủ đề / Dự án<br>đã tồn tại chưa?"}
     
-    Exists -- "Đã có sẵn" --> ReadHub["Đọc tệp 00. Tổng quan & Nhật ký cũ"]
-    ReadHub --> ContinueWork["Viết tiếp / Cập nhật vào cấu trúc hiện có"]
+    Exists -- "Đã có sẵn" --> ReadHub["Đọc tệp Tổng quan & Các tệp vệ tinh"]
+    ReadHub --> ContinueWork["Viết tiếp / Cập nhật sống (Living Docs) vào tệp sẵn có"]
     
     Exists -- "Chưa có (Mới)" --> PickZone["Chọn đúng phân khu:<br>Game / Knownledge / Mindy / Outsource / Todo_List"]
-    PickZone --> InitFolder["Tạo thư mục mới + Khởi tạo 00. Tổng quan"]
+    PickZone --> InitFolder["Tạo thư mục mới theo đúng Mẫu Obsidian chuẩn"]
     
     ContinueWork --> DetectMode{"Nhận diện Chế Độ Làm Việc"}
     InitFolder --> DetectMode
@@ -39,21 +39,101 @@ flowchart TD
 
 ---
 
+## 📐 Quy Chuẩn Mẫu Tệp Obsidian & Nguyên Tắc "Tài Liệu Sống" (Living Templates)
+
+Khi tạo mới hoặc chỉnh sửa bất kỳ tệp `.md` nào trong `D:\Obsidian_Save\`, AI Agent **bắt buộc phải tuân theo các mẫu Obsidian có sẵn** (tham chiếu tại `Todo_List\Templates\`, `Game\Dice_Throne\`, `Outsource\AnhHoang_Home\`):
+
+### 1. Cấu Trúc Khuôn Mẫu Bắt Buộc Cho Mọi Tệp `.md`
+Mỗi tệp `.md` sinh ra đều phải có đủ **3 phần khung xương** sau để tương thích hoàn hảo với Obsidian Graph View, Properties và Điều hướng:
+
+- **Phần Đầu — YAML Frontmatter (Properties):**
+  ```yaml
+  ---
+  title: "Tên Tệp / Chủ Đề Rõ Nghĩa"
+  tags:
+    - project/ten-du-an
+    - domain/linh-vuc
+  created: YYYY-MM-DD
+  updated: YYYY-MM-DD
+  status: active # (planning / active / waiting / done)
+  priority: high # (high / medium / low)
+  related:
+    - "[[Tệp_Tổng_Quan]]"
+    - "[[Tệp_Liên_Quan_Khác]]"
+  ---
+  ```
+- **Phần Giữa Đầu — Khối Callout Điều Hướng Hồ Sơ (Navigation Bar):**
+  Ngay dưới tiêu đề `# H1`, luôn đặt một khối Callout liên kết nhanh tới tệp Tổng quan và các tệp anh em trong cùng dự án:
+  ```markdown
+  > [!TIP] Điều Hướng Hồ Sơ
+  > - 🧭 **Tổng Quan & Bản Đồ**: [[00. Tổng quan - Tên Chủ Đề]]
+  > - 🏛️ **Kiến Trúc / Cấu Hình**: [[Kiến trúc & Cấu hình]]
+  > - 📋 **Kế Hoạch & To-Do**: [[Kế hoạch & To-Do]]
+  > - 🛠️ **Nhật Ký Thay Đổi / Kiểm Thử**: [[Nhật ký thay đổi]]
+  ```
+- **Phần Nội Dung & Chân Trang:**
+  - Trình bày trực quan bằng Bảng biểu, Sơ đồ `mermaid`, Callouts (`> [!important]`, `> [!warning]`, `> [!note]`), và Checkbox chuẩn (`- [ ]`, `- [/]`, `- [x]`).
+  - Không đánh số thứ tự cứng ở đầu tiêu đề (`##`, `###`) và danh sách gạch đầu dòng.
+
+### 2. Nguyên Tắc "Không Tạo Rồi Để Đó" (No Orphan / No Dead Files)
+- **Cấm tạo tệp mồ côi (Orphan Files):** Bất kỳ tệp `.md` mới nào được tạo ra phải **ngay lập tức được gắn link vào tệp Tổng quan (Hub)** và thêm vào mục `related` của các tệp có liên quan.
+- **Duy trì "Tài Liệu Sống" (Living Documentation):**
+  - Tệp `.md` không phải viết 1 lần lúc khởi tạo rồi bỏ mặc!
+  - Sau mỗi bước thực hiện (viết xong 1 hàm, cài xong 1 bản mod, test xong 1 luồng, hoặc chốt xong 1 câu hỏi), AI **bắt buộc phải quay lại cập nhật trực tiếp vào các tệp `.md` tương ứng**: cập nhật trường `updated:`, đánh dấu `[x]` vào To-Do, bổ sung vào Nhật ký thay đổi và xóa các câu hỏi đã giải quyết khỏi tệp `clarifications_needed.md`.
+
+---
+
+## 🧩 Nguyên Tắc Chia Nhỏ Có Trật Tự (Modular Hierarchy — Nhiều File Nhưng Ngăn Nắp)
+
+- **Không nhồi nhét & Không giới hạn cứng nhắc số lượng tệp:**
+  - Không ép tất cả nội dung vào một tệp `.md` khổng lồ gây quá tải ngữ cảnh và khó đọc.
+  - **Tạo nhiều tệp `.md` hoàn toàn tốt**, miễn là mỗi tệp giải quyết đúng một mảng chuyên biệt và được sắp xếp theo **trật tự phân cấp rõ ràng**.
+- **Trật tự phân cấp chuẩn (Hub & Spoke Architecture):**
+  - **Tầng Trạm Trung Tâm (1 Tệp Duy Nhất):** Luôn có tệp `00. Tổng quan...` (hoặc `Tong_Quan_Du_An.md`) làm gốc rễ chứa Sơ đồ tổng thể và Mục lục trỏ tới mọi tệp khác.
+  - **Tầng Chức Năng Cốt Lõi (Các Tệp Vệ Tinh Ngang Hàng):** Tách theo đúng bản chất công việc:
+    - *Tổng quan & Bản đồ:* `00. Tổng quan - [Tên].md` *(hoặc `Tong_Quan_Du_An.md`)*
+    - *Kế hoạch & Tiến độ:* `Kế hoạch & To-Do.md` *(hoặc `Ke_Hoach_Va_To_Do.md` / `implementation_plan.md`)*
+    - *Kiến trúc / Kỹ thuật:* `Kiến trúc & Mã nguồn.md` *(hoặc `Kien_Truc_Va_Ma_Nguon.md`)*
+    - *Nghiệp vụ / Luật chơi / Chi tiết:* `Nghiệp vụ & Luật chơi.md` *(hoặc tách thành các tệp `Flow - [Tên Luồng].md`)*
+    - *Nhật ký thay đổi & Kiểm thử:* `Nhật ký thay đổi.md` / `Hệ thống kiểm thử.md` *(hoặc `walkthrough.md`)*
+    - *Đính chính & Câu hỏi:* `Cần làm rõ.md` *(hoặc `clarifications_needed.md`)*
+  - **Tầng Thư Mục Con Chuyên Sâu (Khi một mảng có nhiều phần nhỏ):**
+    - Khi một chủ đề có nhiều bài học, nhiều chương hoặc nhiều luồng nhỏ (từ 4-5 tệp con trở lên), hãy **gom chúng vào một thư mục con có tên rõ nghĩa** và đánh số thứ tự `01.`, `02.`, `03.` cho tên tệp bên trong thư mục đó để cây thư mục của Obsidian luôn phẳng phiu, trật tự.
+  - **Tầng Lưu Trữ (`Lưu Trữ/` hoặc `Archive/`):**
+    - Những gì đã cũ hoặc hoàn tất từ lâu thì đưa vào thư mục `Lưu Trữ/` để giữ cho không gian làm việc chính luôn sạch sẽ.
+
+```mermaid
+flowchart LR
+    Hub["🧭 00. Tổng quan / Tong_Quan_Du_An.md<br><i>(Trạm Điều Phối Trung Tâm)</i>"]
+    
+    Hub --> Todo["📋 Kế hoạch & To-Do.md<br><i>(Theo dõi [ ] -> [/] -> [x])</i>"]
+    Hub --> Arch["🏛️ Kiến trúc / Cấu hình.md"]
+    Hub --> Log["🛠️ Nhật ký thay đổi / Kiểm thử.md<br><i>(Log Mod, Backup, Test Cases)</i>"]
+    Hub --> Clarify["❓ clarifications_needed.md<br><i>(Điểm cần User xác nhận)</i>"]
+    Hub --> SubFolder["📂 Thư Mục Chuyên Đề / Flows/"]
+    
+    SubFolder --> F1["01. Chuyên đề / Flow A.md"]
+    SubFolder --> F2["02. Chuyên đề / Flow B.md"]
+    SubFolder --> F3["03. Chuyên đề / Flow C.md"]
+```
+
+---
+
 ## 🎭 Ba Chế Độ Thích Ứng Linh Hoạt (Adaptive Operational Modes)
 
-Không áp đặt một khuôn mẫu cứng nhắc cho mọi việc. AI Agent tự động nhận diện bản chất yêu cầu của User để kích hoạt đúng chế độ:
+AI Agent tự động nhận diện bản chất yêu cầu của User để kích hoạt đúng chế độ:
 
 ### 💻 Chế Độ Code & Phát Triển Dự Án (Khi làm phần mềm, web, app, phát triển game)
 - **Phân tách 2 không gian làm việc (2 Workspaces):**
   - *Thư mục Dự Án (Code Workspace):* Chỉ chứa mã nguồn, assets, scenes, cấu hình build.
-  - *Thư mục Obsidian (Vault Workspace):* Lưu trữ kiến trúc, kế hoạch, sơ đồ luồng và tiến độ công việc.
+  - *Thư mục Obsidian (Vault Workspace):* Lưu trữ kiến trúc, kế hoạch, sơ đồ luồng, kiểm thử và tiến độ.
 - **Bắt buộc Git cục bộ (`git init`) & Rollback an toàn:**
   - Luôn đảm bảo thư mục code có Git cục bộ ngay cả khi chưa đẩy lên GitHub/GitLab.
-  - Commit thường xuyên sau mỗi mốc tính năng theo chuẩn Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`) để có thể khôi phục (`rollback`) bất kỳ lúc nào.
+  - Commit thường xuyên sau mỗi mốc tính năng theo chuẩn Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`).
 - **Quy chuẩn Ghi Log & Truy Vết (Logging & Debuggability):**
   - Mọi cú pháp code phải đặt log đúng chỗ, đúng cấp độ (`INFO`, `DEBUG`, `WARN`, `ERROR`) tại điểm đầu hàm, trước/sau khi gọi dịch vụ ngoại vi/DB, tại các nhánh điều kiện quan trọng và trong khối bắt lỗi (`try-catch` kèm stack trace).
 - **Truy vết luồng nghiệp vụ (Flow Traceability):**
-  - Khi tài liệu hóa một luồng xử lý (`Flow`), phải mô tả rõ đi từ đâu tới đâu (ví dụ: `Input` $\rightarrow$ `Controller` $\rightarrow$ `Service` $\rightarrow$ `Database` hoặc `Input` $\rightarrow$ `State Machine` $\rightarrow$ `Animation`) kèm đầy đủ **Test Cases** (Happy path, Edge case, Error handling).
+  - Mô tả rõ luồng đi từ đâu tới đâu kèm đầy đủ **Test Cases** (Happy path, Edge case, Error handling).
 
 ### 🛠️ Chế Độ Mod Game, Cài Tool & Tinh Chỉnh Hệ Thống (Khi không viết code dự án)
 Khi hỗ trợ User mod game (Steam, NexusMods, chỉnh file `.ini`/`.json`/`.xml`), cài đặt công cụ, hoặc sửa lỗi máy tính / mạng / Registry:
@@ -65,52 +145,24 @@ Khi hỗ trợ User mod game (Steam, NexusMods, chỉnh file `.ini`/`.json`/`.xm
 
 ### 📚 Chế Độ Nghiên Cứu & Soạn Giáo Án Giảng Dạy (Khi tìm hiểu kiến thức hoặc dạy học)
 - **Trực quan hóa tối đa:** Sử dụng sơ đồ `mermaid`, bảng so sánh đối chiếu và các hình ảnh ẩn dụ đời thực để giải thích khái niệm phức tạp một cách ngắn gọn, dễ hiểu nhất.
-- **Chia nhỏ & Liên kết:** Nếu nội dung dài, chủ động tách thành thư mục chuyên đề và liên kết chéo chặt chẽ bằng `[[WikiLinks]]`.
+- **Chia nhỏ có trật tự:** Tách thành thư mục chuyên đề đánh số thứ tự rõ ràng và liên kết chéo chặt chẽ bằng `[[WikiLinks]]` về tệp Tổng quan.
 - **Tạo công cụ thực chiến:** Soạn sẵn Cheat Sheet tóm tắt, mẹo làm bài (Tips & Tricks) hoặc Master Prompt khi cần sinh code mẫu / bài tập.
 
 ---
 
-## 🔄 Chiến Lược Tách Chat & Quản Lý Tiến Độ (Session Splitting & Task Management)
+## 🔄 Chiến Lược Tách Chat & Quản Lý Tiến Độ (Session Splitting)
 
-- **Vai trò Project / Task Manager của AI:**
-  - Chủ động phân rã yêu cầu của User thành các đầu việc nhỏ cụ thể và cập nhật trạng thái (`[ ]` Chưa làm $\rightarrow$ `[/]` Đang làm $\rightarrow$ `[x]` Đã xong).
-  - Giữ danh sách việc luôn tinh gọn, nhìn vào thấy ngay: **"Việc gì đang làm"** và **"Còn việc gì cần làm tiếp"**.
-- **Chiến lược Tách Chat chống "quên ngữ cảnh":**
-  - **Obsidian là Bộ Nhớ Trung Tâm (Single Source of Truth):** Lưu giữ toàn bộ kiến trúc, lịch sử thay đổi và tiến độ.
-  - **Mỗi phiên chat là một Công Nhân Chuyên Biệt (Ephemeral Worker):** Chỉ tập trung giải quyết 1 tính năng, 1 luồng hoặc 1 vấn đề cụ thể với 100% dung lượng ngữ cảnh sạch, tránh việc kéo dài 1 chat quá lâu khiến AI quên code hoặc nhầm lẫn thông tin cũ.
-  - Kết thúc mỗi phiên chat: Hoàn tất công việc $\rightarrow$ Lưu/Commit an toàn $\rightarrow$ Cập nhật kết quả vào tệp `.md` trong Obsidian.
-- **Xử lý khi có nhiều điểm chưa chắc chắn:**
-  - Nếu có nhiều hướng giải quyết, nguy cơ xung đột (như xung đột mod, khác biệt kiến trúc) hoặc yêu cầu còn mơ hồ: AI không được đoán mò mà phải **tạo tệp `Cần làm rõ - [Tên].md` (hoặc `clarifications_needed.md`)** tổng hợp toàn bộ câu hỏi và so sánh ưu/nhược điểm để User xác nhận một lần trước khi làm.
-
----
-
-## 🏷️ Quy Chuẩn Đặt Tên Tệp `.md` Thống Nhất (Để các chat sau dễ làm việc)
-
-Để bất kỳ phiên chat mới nào khi quét thư mục cũng hiểu ngay vai trò của từng tệp, toàn bộ các thư mục trong `D:\Obsidian_Save\` thống nhất sử dụng **6 mẫu tên tệp chuẩn** sau:
-
-| Loại Tệp | Quy Ước Đặt Tên Chuẩn | Vai Trò & Nội Dung Cốt Lõi |
-| :--- | :--- | :--- |
-| **Trạm Điều Phối Trung Tâm** | `00. Tổng quan - [Tên Chủ Đề].md`<br>*(hoặc `00. Dashboard.md`)* | **Tệp đầu tiên AI phải đọc** khi vào một thư mục. Chứa mục lục liên kết đến mọi tệp khác và bảng theo dõi tiến độ (`[ ]`, `[/]`, `[x]`). |
-| **Kế Hoạch Thực Hiện** | `Kế hoạch - [Tên Việc].md`<br>*(hoặc `implementation_plan.md`)* | Ghi phương án dự kiến trước khi bắt tay vào làm (dự định cài/sửa những gì, hoặc kế hoạch viết code ra sao). |
-| **Nhật Ký Thay Đổi & Kết Quả** | `Nhật ký thay đổi - [Tên].md`<br>*(hoặc `walkthrough.md` / `changelog.md`)* | • **Mod Game / Hệ thống:** Lưu đường dẫn gốc, thông số cũ $\rightarrow$ mới, danh sách mod và cách khôi phục.<br>• **Dự án Code:** Lưu báo cáo kết quả kiểm thử và lịch sử hoàn thành. |
-| **Tài Liệu Chi Tiết / Luồng** | `Chi tiết - [Tên Mảng].md`<br>*(hoặc `Flow - [Tên Luồng].md`)* | Các tệp tách nhỏ theo từng phần chuyên sâu (VD: `Chi tiết - Mod Đồ Họa.md`, `Flow - Xử Lý Thanh Toán.md`) được móc nối từ tệp `00.`. |
-| **Câu Hỏi Cần Xác Nhận** | `Cần làm rõ - [Tên].md`<br>*(hoặc `clarifications_needed.md`)* | Nơi AI liệt kê các điểm còn mơ hồ hoặc các phương án cần User quyết định trước khi thực thi. |
-| **Lưu Trữ Lịch Sử** | Thư mục `Lưu Trữ/` *(hoặc `Archive/`)* | Nơi cất các công việc/báo cáo cũ đã hoàn tất để giữ cho thư mục chính luôn gọn gàng, không làm nhiễu AI ở các chat sau. |
-
----
-
-## ✨ Quy Chuẩn Định Dạng Tài Liệu Trong Obsidian
-
-- **Liên kết chéo bắt buộc (`[[WikiLinks]]`):** Các tệp `.md` có liên quan logic hoặc nghiệp vụ phải luôn được gắn link kết nối với nhau và nối về tệp `00. Tổng quan`.
-- **Không đánh số thứ tự cứng ở đầu dòng (No Numbered Headings / Lists):** Các tiêu đề (`##`, `###`) và danh sách gạch đầu dòng không đánh số cứng (`1.`, `2.`, `1.1.`) để giao diện đọc và cây mục lục (Outline) trên Obsidian luôn thoáng đãng.
-- **Cấu hình hiển thị Vault:** Tệp `.obsidian/app.json` trong các Vault luôn đặt `"showLineNumber": false`.
+- **Obsidian là Bộ Nhớ Trung Tâm — Mỗi Phiên Chat là Một Công Nhân Chuyên Biệt:**
+  - Tránh kéo dài một phiên chat quá lâu gây tràn bộ nhớ ngữ cảnh khiến AI quên code hoặc nhầm lẫn lịch sử cũ.
+  - Mỗi phiên chat mới chỉ tập trung giải quyết trọn vẹn 1 tính năng, 1 luồng hoặc 1 vấn đề với 100% ngữ cảnh sạch.
+  - Kết thúc mỗi bước công việc: Lưu/Commit an toàn $\rightarrow$ **Cập nhật ngay kết quả vào các tệp `.md` trong Obsidian** để phiên chat sau đọc vào là nắm bắt được ngay lập tức.
 
 ---
 
 ## 📋 Mẫu Prompt Khởi Động Nhanh Cho Mọi Phiên Chat Mới
 
 > [!tip] **Cách dùng:**
-> Khi mở một phiên chat mới cho bất kỳ nhu cầu nào (Làm dự án, Mod game, Sửa máy, Học tập), bạn chỉ cần gắn thư mục liên quan và gửi đoạn prompt ngắn gọn dưới đây:
+> Khi mở một phiên chat mới cho bất kỳ nhu cầu nào (Làm dự án, Mod game, Sửa máy, Học tập), bạn chỉ cần gắn thư mục liên quan và gửi đoạn prompt dưới đây:
 
 ```markdown
 Chào bạn, hãy đọc và tuân thủ nghiêm ngặt quy chuẩn tại `D:\Obsidian_Save\GEMINI.md`.
@@ -119,8 +171,9 @@ Yêu cầu của tôi trong phiên chat này: [MÔ TẢ NGẮN GỌN VIỆC CẦ
 
 Nhiệm vụ bước đầu của bạn:
 - Quét kiểm tra trong `D:\Obsidian_Save\` xem chủ đề/dự án này đã có sẵn thư mục ghi chú chưa:
-  + Nếu ĐÃ CÓ: Hãy đọc tệp `00. Tổng quan...` và các tệp liên quan trong đó để nắm toàn bộ lịch sử rồi làm việc tiếp.
-  + Nếu CHƯA CÓ: Đề xuất vị trí tạo thư mục mới phù hợp và khởi tạo cấu trúc tệp chuẩn.
+  + Nếu ĐÃ CÓ: Đọc tệp Tổng quan và các tệp liên quan trong đó để nắm toàn bộ lịch sử, tuân thủ đúng mẫu trình bày sẵn có và làm việc nối tiếp.
+  + Nếu CHƯA CÓ: Đề xuất vị trí tạo thư mục mới phù hợp, khởi tạo hệ thống tệp `.md` theo đúng Mẫu Obsidian chuẩn (có YAML Frontmatter, Callout điều hướng, chia nhỏ có trật tự và móc nối chặt chẽ về tệp Tổng quan).
 - Tự động bật chế độ làm việc tương ứng (Code & Dev / Modding & Tweaking / Research & Teaching).
-- Khảo sát hiện trạng thư mục dự án/cấu hình (nếu có) và báo cáo cho tôi biết: (1) Bạn đã nắm được thông tin gì, (2) Có điểm nào cần tôi xác nhận trước không, và (3) Các bước tiếp theo chúng ta sẽ thực hiện.
+- Lưu ý: Mọi tệp `.md` tạo ra phải là "tài liệu sống" — luôn được liên kết chéo và cập nhật liên tục theo tiến độ thật, tuyệt đối không tạo ra rồi bỏ đó.
+- Khảo sát hiện trạng và báo cáo cho tôi biết: (1) Bạn đã nắm được thông tin gì, (2) Có điểm nào cần tôi xác nhận trước không, và (3) Các bước tiếp theo chúng ta sẽ thực hiện.
 ```
