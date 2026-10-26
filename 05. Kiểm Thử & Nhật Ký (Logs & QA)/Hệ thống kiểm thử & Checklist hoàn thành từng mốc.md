@@ -5,12 +5,12 @@ tags:
   - category/qa-logs
   - domain/testing
 created: 2026-10-21
-updated: 2026-10-21
+updated: 2026-10-26
 status: active
 priority: high
 related:
   - "[[00. Tổng quan - Học & Phát Triển Game 2D & 3D (Godot 4)]]"
-  - "[[01. Thiết lập Godot 4, Antigravity IDE, LSP & Git LFS]]"
+  - "[[01. Thiết lập Godot 4, VS Code, LSP & Git LFS]]"
   - "[[01. Vật lý 2D, Điều khiển Nhân vật & State Machine]]"
   - "[[01. Autoload (Singletons), EventBus, AudioManager & SceneTransition]]"
   - "[[01. Không gian 3D, Node3D, Camera3D, Ánh sáng & Môi trường]]"
@@ -20,7 +20,7 @@ related:
 
 > [!TIP] Điều Hướng Hồ Sơ
 > - 🧭 **Về Trang Tổng Quan**: [[00. Tổng quan - Học & Phát Triển Game 2D & 3D (Godot 4)]]
-> - 🛠️ **Giai đoạn 0 (Setup)**: [[01. Thiết lập Godot 4, Antigravity IDE, LSP & Git LFS]] | [[02. Quy trình Non-Code — Nhạc lý (DAW), SFX & Đồ họa 2D-3D]]
+> - 🛠️ **Giai đoạn 0 (Setup)**: [[01. Thiết lập Godot 4, VS Code, LSP & Git LFS]] | [[02. Quy trình Non-Code — Nhạc lý (DAW), SFX & Đồ họa 2D-3D]]
 > - 🕹️ **Giai đoạn 1 (2D)**: [[01. Vật lý 2D, Điều khiển Nhân vật & State Machine]] | [[02. Giao diện (UI), Hiệu ứng (Juice) & Thiết kế Hướng Dữ Liệu (Data-Driven)]]
 > - 🌉 **Giai đoạn 2 (Core Bridge)**: [[01. Autoload (Singletons), EventBus, AudioManager & SceneTransition]] | [[02. Hệ thống Save-Load, Quản lý Resource & Đa ngôn ngữ]]
 > - 🧊 **Giai đoạn 3 (3D)**: [[01. Không gian 3D, Node3D, Camera3D, Ánh sáng & Môi trường]] | [[02. Nhập Mô Hình 3D (.glb), Rigging, AnimationTree & Âm Thanh Không Gian 3D]]
@@ -33,7 +33,7 @@ Trước khi chuyển từ mốc hiện tại sang mốc tiếp theo (đặc bi�
 
 | Chốt chặn | Tiêu chí kiểm tra kỹ thuật | Công cụ kiểm tra |
 | :--- | :--- | :--- |
-| **Code & Kiến trúc** | Không còn cảnh báo vàng/đỏ từ `Error Lens` và Godot Debugger; 100% biến/hàm có Static Typing; có log truy vết rõ ràng. | Antigravity IDE + `godot-tools` LSP |
+| **Code & Kiến trúc** | Không còn cảnh báo vàng/đỏ từ `Error Lens` và Godot Debugger; 100% biến/hàm có Static Typing; có log truy vết rõ ràng. | VS Code (`godot-tools` LSP) + Antigravity Coding Agent |
 | **Trải nghiệm trên Godot** | Chạy thử (`F5`/`F6`) ổn định ở `60 FPS`; không bị rò rỉ bộ nhớ (Orphan Nodes = 0 trong tab *Debugger > Monitors*). | Godot Profiler & Monitors |
 | **Âm nhạc & SFX** | Nhạc nền loop mượt không bị khựng đầu/cuối; âm lượng đã chuẩn hóa không bị rè (Clipping $> 0\text{ dB}$). | DAW Meter & Godot Audio Bus |
 | **Quản lý phiên bản** | Toàn bộ file `.png`, `.ogg`, `.glb` được theo dõi qua **Git LFS**; đã commit theo chuẩn Conventional Commits. | GitHub Desktop / `git lfs status` |
@@ -77,4 +77,5 @@ Trước khi chuyển từ mốc hiện tại sang mốc tiếp theo (đặc bi�
 | Ngày cập nhật | Mốc thực hiện | Hạng mục hoàn thành (`[Code]` / `[Godot]` / `[Nhạc]` / `[Asset]`) | Ghi chú kỹ thuật / Commit ID |
 | :---: | :--- | :--- | :--- |
 | `2026-10-21` | **Khởi tạo Dự án** | Thiết lập toàn bộ cấu trúc Hồ sơ Obsidian (5 thư mục chuyên mục, 8 tệp lộ trình & checklist phân vai). | Khởi tạo lộ trình chuẩn `GEMINI.md` |
-| *Chờ cập nhật...* | **Mốc 0 — Setup** | `[ ]` Cài đặt Godot 4.x, Antigravity IDE Extensions, Git LFS & DAW. | — |
+| `2026-10-26` | **Cập nhật Công cụ** | Điều chỉnh quy trình: dùng **VS Code** để xem/debug code (LSP `6005`) và **Antigravity Coding Agent** để lập trình tự động. | Đồng bộ toàn bộ hồ sơ |
+| *Chờ cập nhật...* | **Mốc 0 — Setup** | `[ ]` Cài đặt Godot 4.x, VS Code Extensions, Git LFS & DAW. | — |

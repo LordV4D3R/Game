@@ -10,7 +10,6 @@ updated: 2026-10-26
 status: active
 priority: high
 related:
-  - "[[00. Tổng quan - Dashboard]]"
   - "[[00. Tổng quan - Học & Phát Triển Game 2D & 3D (Godot 4)]]"
   - "[[GEMINI]]"
 ---
@@ -18,8 +17,7 @@ related:
 # 💻 Tóm Tắt Bàn Giao & Hướng Dẫn Làm Việc Trên Laptop (Linux Mint)
 
 > [!TIP] Điều Hướng Nhanh
-> - 🧭 **Bảng Điều Khiển Chung**: [[00. Tổng quan - Dashboard]]
-> - 🎮 **Dự Án Trọng Tâm Hiện Tại**: [[00. Tổng quan - Học & Phát Triển Game 2D & 3D (Godot 4)]]
+> - 🎮 **Tổng Quan Dự Án Game**: [[00. Tổng quan - Học & Phát Triển Game 2D & 3D (Godot 4)]]
 > - ⚖️ **Quy Chuẩn Vận Hành AI Agent**: [[GEMINI]]
 
 ---
@@ -36,8 +34,8 @@ related:
 ### Các Hạng Mục Đã Hoàn Tất 100% Trong Obsidian
 - [x] **Quy chuẩn gốc `GEMINI.md`**: Thiết lập nguyên tắc **Folder-First Hierarchy** (tách thư mục con cho từng chuyên mục, chỉ để tệp `00. Tổng quan...` ở ngoài cùng) và **Obsidian Living Templates** (YAML Frontmatter, Callout điều hướng, Mermaid, cập nhật liên tục).
 - [x] **Cấu hình giao diện `.obsidian/`**: Đã lưu sẵn `app.json` (tắt số dòng), `appearance.json`, `core-plugins.json`, `graph.json` để khi mở trên Linux Mint giữ nguyên trải nghiệm như trên máy bàn.
-- [x] **Bộ Hồ Sơ Dự Án `05. Học & Phát Triển Game 2D & 3D (Godot 4)`**:
-  - Đã chia thành **5 thư mục chuyên mục** và **8 tệp lộ trình chi tiết**.
+- [x] **Bộ Hồ Sơ Dự Án `Học & Phát Triển Game 2D & 3D (Godot 4)`**:
+  - Đã chia thành **5 thư mục chuyên mục** (`01.` $\rightarrow$ `05.`) ngay tại gốc Vault và **8 tệp lộ trình chi tiết**.
   - Đã phân tách rõ 4 nhãn vai trò trong từng checklist: `[Code cùng AI]`, `[Thao tác trên Godot]`, `[Tự soạn nhạc]`, và `[Tạo Asset]`.
   - Đã lồng ghép lộ trình thực hành **Nhạc lý (Music Theory)** gắn liền với 6 mốc làm game (từ nhịp 4/4, vòng hòa âm cơ bản, Pentatonic Loop $\rightarrow$ Adaptive Crossfade, Hợp âm 7 $\rightarrow$ Điệu thức Dorian/Lydian & Leitmotif 3D).
 
@@ -67,7 +65,7 @@ Khi bắt đầu bước vào **Giai đoạn 0 (Setup & Pipeline)** trên laptop
 | Nhóm công cụ | Cách cài đặt nhanh trên Linux Mint | Ghi chú cấu hình |
 | :--- | :--- | :--- |
 | **Godot Engine 4.x** | Tải bản `Godot_v4.x_linux.x86_64` từ trang chủ hoặc qua Flatpak | Nên dùng bản `.x86_64` thực thi trực tiếp để kết nối LSP cổng `6005` mượt nhất (tránh bị sandbox của Flatpak chặn cổng). |
-| **Antigravity IDE** | Mở thư mục Code + thư mục Obsidian trong Workspace | Cài 4 extensions: `godot-tools` (`geequlim`), `Error Lens`, `GitLens`, `Markdown All in One`. |
+| **VS Code & Antigravity Agent** | Dùng **VS Code** (`/usr/bin/code`) để xem code/debug + **Antigravity Coding Agent** để code cùng AI | Cài 4 extensions trên VS Code: `godot-tools` (`geequlim`), `Error Lens`, `GitLens`, `Markdown All in One`. |
 | **DAW Soạn Nhạc** | **REAPER** (có bản Linux native `.tar.xz` cực nhẹ) hoặc **LMMS** / **MuseScore 4** (AppImage/Flatpak) | Cấu hình đầu ra âm thanh trên Linux Mint qua **PipeWire / PulseAudio** hoặc **ALSA** để độ trễ (latency) thấp nhất. |
 | **Đồ Họa 2D & 3D** | **Krita**, **Aseprite**, **Blender** (`sudo apt install krita blender` hoặc bản tải trực tiếp) | Phục vụ hậu kỳ Sprite 2D và kiểm tra/gộp Animation `.glb` 3D. |
 
@@ -96,14 +94,14 @@ flowchart LR
 
 ---
 
-## 📋 Prompt Khởi Động Nhanh Khi Mở Antigravity Trên Laptop Linux Mint
+## 📋 Prompt Khởi Động Nhanh Khi Mở Antigravity Coding Agent Trên Laptop Linux Mint
 
-Sau khi clone repo về máy Linux Mint, bạn chỉ cần mở Antigravity IDE, gắn thư mục vừa clone vào và gửi đoạn prompt sau:
+Sau khi clone repo về máy Linux Mint, bạn mở code bằng **VS Code** và mở **Antigravity Coding Agent**, gắn thư mục vừa clone vào và gửi đoạn prompt sau:
 
 ```markdown
 Chào bạn, tôi đang làm việc trên laptop chạy Linux Mint. Tôi vừa clone kho lưu trữ Obsidian này về từ GitHub.
 
-Hãy đọc tệp `GEMINI.md`, `README.md` và tệp tổng quan dự án tại `05. Học & Phát Triển Game 2D & 3D (Godot 4)/00. Tổng quan - Học & Phát Triển Game 2D & 3D (Godot 4).md`.
+Hãy đọc tệp `GEMINI.md`, `README.md` và tệp tổng quan dự án tại `00. Tổng quan - Học & Phát Triển Game 2D & 3D (Godot 4).md`.
 
 Lưu ý:
 - Tự động ánh xạ mọi đường dẫn Windows (`D:\Obsidian_Save\...`) sang đường dẫn Linux Mint hiện tại của Workspace.
