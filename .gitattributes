@@ -1,0 +1,7 @@
+# Auto normalize line endings across Windows & Linux Mint
+* text=auto eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.gd text eol=lf
+*.tscn text eol=lf
+*.tres text eol=lf
