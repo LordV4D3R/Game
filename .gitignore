@@ -1,12 +1,25 @@
-# Windows thumbnails & caches
+# OS generated files (Windows & Linux Mint)
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+.DS_Store
+.directory
+.Trash-*
 
-# Temporary files
+# Temporary & backup files
 *.tmp
 *.bak
 *~
+*.swp
 
-# Obsidian workspace cache (optional, avoids noisy commits on tab switches)
+# Obsidian volatile cache (ignore tab/window layout cache to avoid noisy diffs across PC & Laptop, but KEEP all core configs!)
 .obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.trash/
+
+# Explicitly track Obsidian core settings & appearance
+!.obsidian/app.json
+!.obsidian/appearance.json
+!.obsidian/core-plugins.json
+!.obsidian/graph.json
