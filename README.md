@@ -53,8 +53,8 @@ Mở Terminal trên Linux Mint và chạy:
 sudo apt update && sudo apt install -y git git-lfs
 git lfs install
 
-# 2. Clone kho lưu trữ Obsidian về thư mục cá nhân
-git clone <URL_GITHUB_REPO_CUA_BAN> ~/Obsidian_Save
+# 2. Clone kho lưu trữ Obsidian về thư mục cá nhân (qua SSH)
+git clone git@github.com:LordV4D3R/Game.git ~/Obsidian_Save
 cd ~/Obsidian_Save
 ```
 
