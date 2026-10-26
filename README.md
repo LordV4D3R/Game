@@ -14,11 +14,41 @@ related:
   - "[[GEMINI]]"
 ---
 
-# 💻 Tóm Tắt Bàn Giao & Hướng Dẫn Làm Việc Trên Laptop (Linux Mint)
+# 🖥️ Hướng Dẫn Thiết Lập & Đồng Bộ Trên PC Windows (Nhánh `windows-pc`)
 
 > [!TIP] Điều Hướng Nhanh
 > - 🎮 **Tổng Quan Dự Án Game**: [[00. Tổng quan - Học & Phát Triển Game 2D & 3D (Godot 4)]]
+> - 🛠️ **Hướng Dẫn Setup Chi Tiết**: [[01. Thiết lập Godot 4, VS Code, LSP & Git LFS]]
 > - ⚖️ **Quy Chuẩn Vận Hành AI Agent**: [[GEMINI]]
+
+---
+
+## 🌿 Cấu Trúc 2 Nhánh Git Của Dự Án
+- **`main` (Nhánh chung đa nền tảng):** Chứa toàn bộ hồ sơ Obsidian (`00.` $\rightarrow$ `05.`) và mã nguồn dự án `Godot_Project/` dùng chung cho cả Linux Mint và Windows.
+- **`windows-pc` (Nhánh chuyên biệt cho PC Windows):** Tích hợp sẵn bộ kịch bản tự động cài đặt 1 chạm (`BAM_VAO_DAY_DE_SETUP_WINDOWS.bat` / `setup_windows.ps1`), các tệp `.bat` đồng bộ nhanh (`BAM_VAO_DAY_DE_PULL.bat`, `BAM_VAO_DAY_DE_PUSH.bat`) và checklist riêng cho máy bàn Windows.
+
+---
+
+## ⚡ 3 Bước Thiết Lập Nhanh Khi Về PC Windows
+
+1. **Chuyển sang nhánh `windows-pc` trên PC Windows:**
+   ```powershell
+   git fetch origin
+   git checkout windows-pc
+   git pull origin windows-pc
+   ```
+2. **Chạy kịch bản cài đặt tự động 1 chạm:**
+   - Nhấp đúp vào tệp **`BAM_VAO_DAY_DE_SETUP_WINDOWS.bat`** (hoặc chạy `.\setup_windows.ps1` trong PowerShell).
+   - Kịch bản sẽ tự động:
+     - Kiểm tra và kích hoạt **Git LFS** (`git lfs install`).
+     - Tự động cài đủ 4 Extensions cho **VS Code** (`geequlim.godot-tools`, `usernamehw.errorlens`, `eamodio.gitlens`, `yzhang.markdown-all-in-one`).
+     - Tạo sẵn `Godot_Project\.vscode\settings.json` kết nối cổng LSP `6005`.
+3. **Mở Dự Án trong Godot 4 & VS Code:**
+   - Mở **Godot 4.x (win64)** $\rightarrow$ bấm **Import** $\rightarrow$ chọn `Godot_Project\project.godot`.
+   - Trong Godot 4: Vào **Editor $\rightarrow$ Editor Settings $\rightarrow$ Text Editor $\rightarrow$ External**:
+     - Bật **Use External Editor**: `On`
+     - **Exec Path**: Đường dẫn tới `Code.exe`
+     - **Exec Flags**: `{project} --goto {file}:{line}:{col}`
 
 ---
 
