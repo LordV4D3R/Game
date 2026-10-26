@@ -22,6 +22,12 @@ related:
 
 ---
 
+## 🌿 Cấu Trúc 2 Nhánh Git Của Kho Lưu Trữ
+- **`main` (Nhánh chung & Laptop Linux Mint):** Chứa toàn bộ hồ sơ Obsidian (`00.` $\rightarrow$ `05.`), quy chuẩn `GEMINI.md` và mã nguồn `Godot_Project/` dùng chung.
+- **`windows-pc` (Nhánh chuyên biệt để Setup trên PC Windows):** Tích hợp sẵn bộ script cài đặt 1 chạm (`BAM_VAO_DAY_DE_SETUP_WINDOWS.bat` / `setup_windows.ps1`), các tệp `.bat` kéo/đẩy nhanh (`BAM_VAO_DAY_DE_PULL.bat`, `BAM_VAO_DAY_DE_PUSH.bat`) và checklist riêng cho máy bàn Windows (`git checkout windows-pc`).
+
+---
+
 ## 📌 Tóm Tắt Hiện Trạng Trước Khi Ra Ngoài (Handover Summary)
 
 > [!important] **Dành cho AI Agent trên Laptop Linux Mint:**
