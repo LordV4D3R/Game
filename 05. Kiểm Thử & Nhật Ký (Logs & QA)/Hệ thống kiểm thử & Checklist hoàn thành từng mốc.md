@@ -78,4 +78,4 @@ Trước khi chuyển từ mốc hiện tại sang mốc tiếp theo (đặc bi�
 | :---: | :--- | :--- | :--- |
 | `2026-10-21` | **Khởi tạo Dự án** | Thiết lập toàn bộ cấu trúc Hồ sơ Obsidian (5 thư mục chuyên mục, 8 tệp lộ trình & checklist phân vai). | Khởi tạo lộ trình chuẩn `GEMINI.md` |
 | `2026-10-26` | **Cập nhật Công cụ** | Điều chỉnh quy trình: dùng **VS Code** để xem/debug code (LSP `6005`) và **Antigravity Coding Agent** để lập trình tự động. | Đồng bộ toàn bộ hồ sơ |
-| *Chờ cập nhật...* | **Mốc 0 — Setup** | `[ ]` Cài đặt Godot 4.x, VS Code Extensions, Git LFS & DAW. | — |
+| `2026-10-26` | **Mốc 0 — Setup** | `[x]` Cài đặt Godot `4.7.2-stable`, 4 VS Code Extensions, Git LFS `3.8.1`, REAPER DAW `7.27`, tạo `Godot_Project/` & Autoload `GameLogger`. | Đã kiểm thử headless pass 100% |

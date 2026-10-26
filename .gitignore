@@ -12,6 +12,16 @@ Desktop.ini
 *~
 *.swp
 
+# Godot 4+ specific ignores
+.godot/
+**/.godot/
+.nomedia
+build/
+exports/
+*.exe
+*.pck
+*.x86_64
+
 # Obsidian volatile cache (ignore tab/window layout cache to avoid noisy diffs across PC & Laptop, but KEEP all core configs!)
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
